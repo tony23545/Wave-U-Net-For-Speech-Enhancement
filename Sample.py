@@ -1,4 +1,4 @@
-#import Metadata
+import Metadata
 
 class Sample(object):
     '''
@@ -10,26 +10,26 @@ class Sample(object):
         self.channels = channels
         self.duration = duration
 
-    # @classmethod
-    # def from_path(cls, path):
-    #     '''
-    #     Create new sample object from audio file path by retrieving metadata.
-    #     :param path:
-    #     :return:
-    #     '''
+    @classmethod
+    def from_path(cls, path):
+        '''
+        Create new sample object from audio file path by retrieving metadata.
+        :param path:
+        :return:
+        '''
 
-    #     sr, channels, duration = Metadata.get_audio_metadata(path)
-    #     return cls(path, sr, channels, duration)
+        sr, channels, duration = Metadata.get_audio_metadata(path)
+        return cls(path, sr, channels, duration)
 
-    # @classmethod
-    # def from_array(cls, path, audio, sr):
-    #     '''
-    #     Create new sample object from a numpy audio array
-    #     :param path:
-    #     :return:
-    #     '''
+    @classmethod
+    def from_array(cls, path, audio, sr):
+        '''
+        Create new sample object from a numpy audio array
+        :param path:
+        :return:
+        '''
 
-    #     channels = audio.shape[1]
-    #     duration = float(audio.shape[0]) / float(sr)
-    #     return cls(path, sr, channels, duration)
+        channels = audio.shape[1]
+        duration = float(audio.shape[0]) / float(sr)
+        return cls(path, sr, channels, duration)
 

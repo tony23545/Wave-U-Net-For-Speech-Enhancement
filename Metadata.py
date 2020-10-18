@@ -1,7 +1,6 @@
 
 import os, re, subprocess
 from soundfile import SoundFile
-import scikits.audiolab
 import Utils
 
 class AudioReadError(EnvironmentError):
@@ -70,12 +69,7 @@ def get_audio_metadata(audioPath, sphereType=False):
     :return:
     '''
     ext = os.path.splitext(audioPath)[1][1:].lower()
-    if ext=="aiff" or sphereType:  # SPHERE headers for the TIMIT dataset
-        audio = scikits.audiolab.Sndfile(audioPath)
-        sr = audio.samplerate
-        channels = audio.channels
-        duration = float(audio.nframes) / float(audio.samplerate)
-    elif ext=="mp3": # Use ffmpeg/ffprobe
+    if ext=="mp3": # Use ffmpeg/ffprobe
         sr, channels, duration = get_mp3_metadata(audioPath)
     else:
         snd_file = SoundFile(audioPath, mode='r')
