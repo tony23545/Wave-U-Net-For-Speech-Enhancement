@@ -61,6 +61,7 @@ def getAudioData(noisy_path, speech_path):
     file_list = listdir(noisy_path)
 
     for i in tqdm(range(len(file_list))):
+        item = file_list[i]
         noisy = create_sample(os.path.join(noisy_path, item))
         speech = create_sample(os.path.join(speech_path, item))
         
