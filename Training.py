@@ -187,7 +187,7 @@ def run(cfg):
 
         # Specify path to dataset, as a tracklist composed by an XML file parsed using etree in Datasets.getAudioData
         # Each track element, describing 3 sources [speech.wav, noise.wav, mix.wav] and their relevant metadata, is parsed using etree in Datasets.py
-        dataset_train = Datasets.getAudioData("")
+        dataset_train = Datasets.getAudioData("../noisy_trainset_28spk_wav_16000", "../clean_trainset_28spk_wav_16000")
 
         # Pick 10 random songs for validation from train set (this is always the same selection each time since the random seed is fixed)
         val_idx = np.random.choice(len(dataset_train), size=10, replace=False)

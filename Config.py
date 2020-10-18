@@ -34,7 +34,7 @@ def cfg():
     seed=1337
     experiment_id = np.random.randint(0,1000000)
 
-    model_config["num_sources"] = 2
+    model_config["num_sources"] = 1
     model_config["num_channels"] = 1 if model_config["mono_downmix"] else 2
 
 @config_ingredient.named_config
