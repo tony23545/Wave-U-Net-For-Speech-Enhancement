@@ -11,7 +11,7 @@ from Input import Input as Input
 from Input import batchgenerators as batchgen
 import Utils
 import Models.UnetAudioSeparator
-import cPickle as pickle
+import _pickle as pickle
 import Validation
 
 ex = Experiment('Waveunet Training', ingredients=[config_ingredient])
