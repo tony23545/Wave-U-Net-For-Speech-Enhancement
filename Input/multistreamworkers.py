@@ -75,8 +75,7 @@ class MultistreamWorker_GetSpectrogram:
                     # Check correct number of output channels
                     try:
                         assert (sample[0].shape[1] == options["num_channels"]
-                                and sample[1].shape[1] == options["num_channels"]
-                                and sample[2].shape[1] == options["num_channels"])
+                                and sample[1].shape[1] == options["num_channels"])
                     except Exception as e:
                         print("WARNING: Song " + file.path + " seems to be mono, will duplicate channels to convert into stereo for training!")
                         print("Channels for mix and sources" + str([sample[i].shape[1] for i in range(len(sample))]))

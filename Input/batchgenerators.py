@@ -80,6 +80,6 @@ class BatchGen_Paired:
             if skip_pad > 0:
                 print("WARNING: Had to fix input padding by " + str(skip_pad) + " samples while creating the batch")
             assert(cache_item[0].shape[0] > 0)
-            input_mix[sample_num, :, :] = cache_item[0][start_idx_input+skip_pad:stop_idx_input+skip_pad+2*self.options["pad_frames"],:]
+            input_mix[sample_num, :, :] = cache_item[0][int(start_idx_input+skip_pad):int(stop_idx_input+skip_pad+2*self.options["pad_frames"]),:]
 
         return [input_mix] + sources

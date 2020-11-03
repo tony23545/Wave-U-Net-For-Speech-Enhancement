@@ -178,7 +178,7 @@ def run(cfg):
     # Set up data input
     pickle_file = "dataset.pkl"
     if os.path.exists(pickle_file): # Check whether our dataset file is already there, then load it
-        with open(pickle_file, 'r') as file:
+        with open(pickle_file, 'rbs') as file:
             dataset = pickle.load(file)
         print("Loaded dataset from pickle!")
     else: # Otherwise create the dataset pickle
@@ -204,7 +204,7 @@ def run(cfg):
 
         for subset in ["train", "valid"]:
             for i in range(len(dataset[subset])):
-                dataset[subset][i] = (dataset[subset][i][0], dataset[subset][i][1], dataset[subset][i][2])
+                dataset[subset][i] = (dataset[subset][i][0], dataset[subset][i][1])
 
         # Save dataset
         with open("dataset.pkl", 'wb') as file:
