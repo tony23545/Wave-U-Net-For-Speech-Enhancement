@@ -154,6 +154,12 @@ def optimise(model_config, experiment_id, dataset):
         while worse_epochs < model_config["worse_epochs"]: # Early stopping on validation set after a few epochs
             print("EPOCH: " + str(epoch))
             model_path = train(sup_dataset=dataset["train"], load_model=model_path)
+            if epoch % 5 == 0:
+                valid_sample_path = "valid_samples/"+str(epoch)
+                os.mkdir(valid_sample_path)
+                print("saving validation sample to " + valid_sample_path)
+            else:
+                valid_sample_path = None
             curr_loss = Validation.test(model_config, model_folder=str(experiment_id), audio_list=dataset["valid"], load_model=model_path)
             epoch += 1
             if curr_loss < best_loss:
